@@ -13,7 +13,7 @@ const Directory = (props) => {
             backgroundImage: `url(${Oils})`
           }}>
           <a href='#' className='directory__link'>
-            Essential Oils
+            Essentials
           </a>
         </div>
         <div

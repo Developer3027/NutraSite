@@ -9,7 +9,7 @@ import './styles.scss';
 
 const SocialBar = () => {
   return (
-    <div className='social__container'>
+    <div className='social'>
       <div className='social__number'>
         <p>1(888) 555-1234</p>
       </div>
