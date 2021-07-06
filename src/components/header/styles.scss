@@ -1,0 +1,30 @@
+.header {
+  height: 6.4rem;
+  background-color: #086100;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    // max-width: 1450px;
+    height: 100%;
+    margin: 0 auto;
+  
+
+    .logo{
+      position: absolute;
+      width: 8.0rem;
+      top: 50%;
+      left: 25px;
+      filter: drop-shadow(4px 4px 2px #333);
+      transform: translateY(-50%);
+      z-index: 99;
+
+      img {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.social__container {
+  display: flex;
+  height: 5rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  background: #333;
+
+  .social__number {
+    margin-left: 10px;
+    color: #fff;
+  }
+
+    .social__icons {
+      margin-right: 10px;
+
+    }
+}
+
+.social__icon {
+  font-size: 32px;
+  margin: 0 25px;
+  color: #fff;
+  transition: all 250ms ease;
+}
+
+.social__icon:hover {
+  color: #10c500;
+  cursor: pointer;
+}
