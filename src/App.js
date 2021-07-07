@@ -41,11 +41,15 @@ const App = () => {
       />
       <Route
         path='/registration'
-        render={() => (
-          <MainLayout member={member}>
-            <Registration />
-          </MainLayout>
-        )}
+        render={() =>
+          member ? (
+            <Redirect to='/' />
+          ) : (
+            <MainLayout member={member}>
+              <Registration />
+            </MainLayout>
+          )
+        }
       />
       <Route
         path='/login'
