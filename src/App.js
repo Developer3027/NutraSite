@@ -5,9 +5,9 @@ import { auth, handleUserProfile } from './firebase/utilis';
 import MainLayout from './layouts/MainLayout';
 import HomeLayout from './layouts/HomeLayout';
 
-import Home from './components/pages/home';
-import Registration from './components/pages/registration';
-import Login from './components/pages/login';
+import Home from './pages/home';
+import Registration from './pages/registration';
+import Login from './pages/login';
 import './default.scss';
 
 const App = () => {
