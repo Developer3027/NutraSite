@@ -1,21 +1,40 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { auth, handleUserProfile } from './firebase/utilis';
 
 import MainLayout from './layouts/MainLayout';
 import HomeLayout from './layouts/HomeLayout';
 
-import Home from './components/pages/home/index';
-import Registration from './components/pages/registration/index';
+import Home from './components/pages/home';
+import Registration from './components/pages/registration';
+import Login from './components/pages/login';
 import './default.scss';
 
 const App = () => {
+  const [member, setMember] = useState({});
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userRef = await handleUserProfile(user);
+        userRef.onSnapshot((snapshot) => {
+          setMember({
+            id: snapshot.id,
+            ...snapshot.data()
+          });
+        });
+      }
+      setMember(null);
+    });
+  }, []);
+
   return (
     <div className='app'>
       <Route
         exact
         path='/'
         render={() => (
-          <HomeLayout>
+          <HomeLayout member={member}>
             <Home />
           </HomeLayout>
         )}
@@ -23,10 +42,22 @@ const App = () => {
       <Route
         path='/registration'
         render={() => (
-          <MainLayout>
+          <MainLayout member={member}>
             <Registration />
           </MainLayout>
         )}
+      />
+      <Route
+        path='/login'
+        render={() =>
+          member ? (
+            <Redirect to='/' />
+          ) : (
+            <MainLayout member={member}>
+              <Login />
+            </MainLayout>
+          )
+        }
       />
     </div>
   );
