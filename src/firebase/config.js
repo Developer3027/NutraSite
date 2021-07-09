@@ -1,5 +1,3 @@
-import firebase from 'firebase';
-
 export const firebaseConfig = {
   apiKey: 'AIzaSyAjyUbmmDqq3nvxng4e1G647YKlJr1w0-E',
   authDomain: 'nutrasite-c840d.firebaseapp.com',

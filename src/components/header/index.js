@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { auth } from '../../firebase/utilis';
 import './styles.scss';
 import Logo from '../../assets/fbprofile.png';
 
 const Header = (props) => {
-  const { member } = props;
+  const { currentUser } = props;
   return (
     <header className='header'>
       <div className='header__wrapper'>
@@ -15,14 +16,14 @@ const Header = (props) => {
           </Link>
         </div>
         <div className='header__cta'>
-          {member && (
+          {currentUser && (
             <ul>
               <li>
                 <span onClick={() => auth.signOut()}>Log Out</span>
               </li>
             </ul>
           )}
-          {!member && (
+          {!currentUser && (
             <ul>
               <li>
                 <Link to='/registration'>Register</Link>
@@ -38,4 +39,12 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+Header.defaultProps = {
+  currentUser: null
+};
+
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
+
+export default connect(mapStateToProps, null)(Header);
