@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+
 import { auth, handleUserProfile } from './firebase/utilis';
 import { setCurrentUser } from './redux/user/user.actions';
 
@@ -21,6 +22,7 @@ const App = (props) => {
 
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {
+
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot((snapshot) => {
@@ -97,5 +99,6 @@ const mapStateToProps = ({ user }) => ({
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user))
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
