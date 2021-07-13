@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { signUpUser, resetAllAuthForms } from './../../redux/user/user.actions';
+import { useHistory } from 'react-router-dom';
+import { signUpUserStart } from './../../redux/user/user.actions';
 import './styles.scss';
 
 import AuthWrapper from './../auth_wrapper';
@@ -10,13 +10,14 @@ import FormInput from '../forms/form_input';
 import Buttons from '../forms/button';
 
 const mapState = ({ user }) => ({
-  signUpSuccess: user.signUpSuccess,
-  signUpError: user.signUpError
+  currentUser: user.currentUser,
+  userErr: user.userErr
 });
 
 const SignUp = (props) => {
-  const { signUpSuccess, signUpError } = useSelector(mapState);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { currentUser, userErr } = useSelector(mapState);
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,18 +25,17 @@ const SignUp = (props) => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    if (signUpSuccess) {
+    if (currentUser) {
       resetForm();
-      dispatch(resetAllAuthForms());
-      props.history.push('/');
+      history.push('/');
     }
-  }, [signUpSuccess]);
+  }, [currentUser]);
 
   useEffect(() => {
-    if (Array.isArray(signUpError) && signUpError.length > 0) {
-      setErrors(signUpError);
+    if (Array.isArray(userErr) && userErr.length > 0) {
+      setErrors(userErr);
     }
-  }, [signUpError]);
+  }, [userErr]);
 
   const resetForm = () => {
     setDisplayName('');
@@ -48,7 +48,7 @@ const SignUp = (props) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      signUpUser({
+      signUpUserStart({
         displayName,
         email,
         password,
@@ -108,4 +108,4 @@ const SignUp = (props) => {
   );
 };
 
-export default withRouter(SignUp);
+export default SignUp;
