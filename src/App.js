@@ -9,6 +9,8 @@ import WithAdminAuth from './hoc/withAdminAuth';
 
 import MainLayout from './layouts/MainLayout';
 import HomeLayout from './layouts/HomeLayout';
+import AdminLayout from './layouts/AdminLayout';
+import DashboardLayout from './layouts/DashboardLayout';
 
 import AdminToolbar from './components/admin_toolbar';
 
@@ -18,6 +20,7 @@ import Login from './pages/login';
 import Recovery from './pages/recovery';
 import Dashboard from './pages/dashboard';
 import Admin from './pages/admin';
+import Products from './pages/products';
 import './default.scss';
 
 const App = (props) => {
@@ -68,9 +71,9 @@ const App = (props) => {
           path='/dashboard'
           render={() => (
             <WithAuth>
-              <MainLayout>
+              <DashboardLayout>
                 <Dashboard />
-              </MainLayout>
+              </DashboardLayout>
             </WithAuth>
           )}
         />
@@ -78,9 +81,19 @@ const App = (props) => {
           path='/admin'
           render={() => (
             <WithAdminAuth>
-              <MainLayout>
+              <AdminLayout>
                 <Admin />
-              </MainLayout>
+              </AdminLayout>
+            </WithAdminAuth>
+          )}
+        />
+        <Route
+          path='/products'
+          render={() => (
+            <WithAdminAuth>
+              <AdminLayout>
+                <Products />
+              </AdminLayout>
             </WithAdminAuth>
           )}
         />

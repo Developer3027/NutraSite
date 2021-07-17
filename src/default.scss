@@ -17,6 +17,7 @@ html, body, #root, .app, .fullHeight {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: #333;
   font-size: 1.8rem;
   font-weight: 400;
   line-height: 1;
@@ -40,4 +41,53 @@ a, a:hover {
   // max-width: 1450px;
   padding: 0 10px;
   margin: 0 auto;
+}
+
+.controlPanel {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-height: 100%;
+  padding: 3rem 0 6rem 25.0rem;
+  border-bottom: 1px solid #d3d3d3;
+  background-color: #d3d3d3;
+
+  .sidebar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 25.0rem;
+    height: 100%;
+    z-index: 1;
+    background-color: #999;
+    border-right: 1px solid #d3d3d3;
+  }
+
+  .content {
+    padding: 0 10px;
+  }
+}
+
+.adminLayout {
+  height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
+}
+
+.dashboardLayout {
+  height: calc(100% - 6.5rem - 5.8rem);
+}
+
+@media only screen and (max-width: 980px) {
+  html {
+    font-size: 9px;
+  }
+
+  .controlPanel {
+    padding: 0 10px;
+
+    .sidebar {
+      position: relative;
+      width: 100%;
+      border: none;
+      margin-bottom: 2.5rem;
+    }
+  }
 }

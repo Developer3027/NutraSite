@@ -1,0 +1,103 @@
+.adminProducts {
+  padding: 0 10px;
+
+  .callToActions {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    ul {
+      li {
+        display: inline-block;
+
+      }
+    }
+
+  }
+
+  .selectArea {
+    display: flex;
+  }
+}
+
+.manageProducts {
+
+  h1 {
+    margin-top: 1.5rem;
+  }
+
+  h4 {
+    margin: 5px auto;
+    padding: 0;
+  }
+  
+  table {
+    width: 100%;
+    
+    tr.card {
+      width: 100%;
+      row-gap: 15px;
+      
+      
+      &:nth-child(odd) {
+        background-color: #fff;
+        border-bottom: 2px solid #333;
+      }
+
+      &:nth-child(even) {
+        background-color: antiquewhite;
+      }
+
+      .thumb {
+        width: 100px;
+        width: 100px;
+        padding: 0 5px;
+        background-color: #999;
+      }
+
+      .name {
+        width: 300px;
+        padding-left: 10px;
+      }
+
+      .price {
+        width: 100px;
+        
+      }
+
+      .stock {
+        width: 55px;
+      }
+
+    }
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .manageProducts {
+    table {
+      width: 100%;
+
+      .results {
+        width: 100%;
+
+        tr td {
+          display: block;
+          width: 100%;
+
+          img {
+            display: block;
+            // width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}

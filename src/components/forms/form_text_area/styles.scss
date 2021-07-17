@@ -1,0 +1,19 @@
+.form__txt__area {
+  
+  label {
+    display: block;
+    margin: 10px auto;
+  }
+
+  input {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 400;
+    text-align: left;
+    padding: 10px 5px;
+    border: none;
+    border: 1px solid #9e9e9e;
+    outline: none;
+  }
+}
